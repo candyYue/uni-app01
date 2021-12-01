@@ -1,0 +1,61 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "src/tabbar/menu/menu",
+			"style": {
+				"navigationBarTitleText": "menu"
+			}
+		},
+		{
+			"path": "src/tabbar/home/home",
+			"style": {
+				"navigationBarTitleText": "home"
+			}
+		},
+		{
+			"path": "src/pages/weather/weather",
+			"style": {
+				"navigationBarTitleText": "weather"
+			}
+		}
+    ],
+	"subPackages":[],
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#007AFF",
+		"borderStyle": "black",
+		"backgroundColor": "#F8F8F8",
+		"list": [
+	        {
+				"pagePath": "src/tabbar/menu/menu",
+				"iconPath":"src/static/logo.png",
+				"selectedIconPath":"src/static/logo.png",
+				"text": "菜单"
+			},
+	        {
+				"pagePath": "src/tabbar/home/home",
+				"iconPath":"src/static/logo.png",
+				"selectedIconPath":"src/static/logo.png",
+				"text": "我的"
+			}
+		]
+	},
+	"topWindow": {
+	    "path": "src/responsive/top-window.vue",
+	    "style": {
+	      "height": "50px"
+	    }
+	 },
+	"leftWindow": {
+	    "path": "src/responsive/left-window.vue",
+	    "style": {
+	      "width": "300px"
+	    }
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "demo",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
