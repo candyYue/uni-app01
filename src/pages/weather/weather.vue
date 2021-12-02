@@ -1,9 +1,25 @@
 <template>
-	<view>weather</view>
+	<view>
+		{{city}}
+		{{realtime.info}}{{realtime.temperature}}
+		{{realtime.direct}}{{realtime.power}}
+	</view>
 </template>
 
 <script>
 	export default{
+		data(){
+			return{
+				city:'',
+				realtime:{
+					temperature:0,
+					info:'晴',
+					direct:'',
+					power:''
+				},
+				future: []
+			}
+		},
 		methods:{
 			getWeather(){
 				console.log('get')
@@ -17,7 +33,17 @@
 					    'content-type': 'application/x-www-form-urlencoded'
 					},
 					success(res) {
-						console.log(res)
+						if(res.statusCode ===200){
+							const {city, future, realtime: {info,temperature,direct,power}} = res.data.result
+							this.city = city
+							this.future = [...future]
+							this.realtime = {
+								info,
+								temperature,
+								direct,
+								power
+							}
+						}
 					},
 					fail(err) {
 						// reject(err)
