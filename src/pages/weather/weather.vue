@@ -1,8 +1,16 @@
 <template>
 	<view>
-		{{city}}
-		{{realtime.info}}{{realtime.temperature}}
-		{{realtime.direct}}{{realtime.power}}
+		<p>{{city}}</p>
+		<p>{{realtime.info}}{{realtime.temperature}}</p>
+		<p>{{realtime.direct}}{{realtime.power}}</p>
+		
+		<ul>
+			<li v-for="(item,index) in future">
+				<span>{{item.date}}</span>
+				<span>{{item.weather}}</span>
+				<span>{{item.temperature}}</span>
+			</li>
+		</ul>
 	</view>
 </template>
 
@@ -22,7 +30,6 @@
 		},
 		methods:{
 			getWeather(){
-				console.log('get')
 				uni.request({
 					url:'/juheweather/simpleWeather/query',
 					data:{
@@ -32,7 +39,7 @@
 					header: {
 					    'content-type': 'application/x-www-form-urlencoded'
 					},
-					success(res) {
+					success:(res)=> {
 						if(res.statusCode ===200){
 							const {city, future, realtime: {info,temperature,direct,power}} = res.data.result
 							this.city = city
@@ -46,13 +53,10 @@
 						}
 					},
 					fail(err) {
-						// reject(err)
 					},
 				})
 			}
 		},
-		// setup(props){
-		// },
 		onLoad(){
 			this.getWeather()
 		}

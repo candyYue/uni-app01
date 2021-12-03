@@ -1,5 +1,8 @@
 <template>
-	<view class="view menu" @click="gotoPage">menu</view>
+	<view class="view menu">
+		<view @click="gotoPage('weather')"></view>
+		<view @click="gotoPage('draw')"></view>
+	</view>
 </template>
 
 <script>
