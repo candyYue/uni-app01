@@ -1,0 +1,1 @@
+<view class="view menu"><view data-event-opts="{{[['tap',[['gotoPage',['weather']]]]]}}" bindtap="__e"></view><view data-event-opts="{{[['tap',[['gotoPage',['draw']]]]]}}" bindtap="__e"></view></view>

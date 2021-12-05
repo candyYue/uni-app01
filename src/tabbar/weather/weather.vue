@@ -1,16 +1,20 @@
 <template>
-	<view>
-		<p>{{city}}</p>
-		<p>{{realtime.info}}{{realtime.temperature}}</p>
-		<p>{{realtime.direct}}{{realtime.power}}</p>
+	<view class="view weather">
+		<view class="today">
+			<view class="weather-info">
+				<text class="city">{{city}}</text><br/>
+				<text class="temp">{{realtime.info}}  {{realtime.temperature}}℃</text><br/>
+				<text class="wind">{{realtime.direct}}{{realtime.power}}</text>
+			</view>
+			<image class="weather-img" src="../../static/img/monday.jpeg"></image>
+			<image class="weather-img-blur" mode="widthFix" src="../../static/img/monday.jpeg"></image>
+		</view>
 		
-		<ul>
-			<li v-for="(item,index) in future">
-				<span>{{item.date}}</span>
-				<span>{{item.weather}}</span>
-				<span>{{item.temperature}}</span>
-			</li>
-		</ul>
+		<view v-for="(item,index) in future" class="future" :key='index'>
+			<text>{{item.date}}</text>
+			<text>{{item.weather}}</text>
+			<text>{{item.temperature}}</text>
+		</view>
 	</view>
 </template>
 
@@ -25,7 +29,8 @@
 					direct:'',
 					power:''
 				},
-				future: []
+				future: [],
+				imageSrc:''
 			}
 		},
 		methods:{
@@ -55,13 +60,18 @@
 					fail(err) {
 					},
 				})
+			},
+			getWeatherImg(){
+				this.imageSrc = '../../static/img/monday.jpeg'
 			}
 		},
 		onLoad(){
 			this.getWeather()
+			this.getWeatherImg()
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
+	@import url("/src/static/css/views/weather.scss");
 </style>

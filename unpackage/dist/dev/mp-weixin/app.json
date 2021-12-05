@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "src/tabbar/weather/weather",
+    "src/tabbar/menu/menu",
+    "src/tabbar/home/home",
+    "src/tabbar/setting/setting"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "demo",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "list": [
+      {
+        "pagePath": "src/tabbar/weather/weather",
+        "iconPath": "src/static/logo.png",
+        "selectedIconPath": "src/static/logo.png",
+        "text": "天气"
+      },
+      {
+        "pagePath": "src/tabbar/menu/menu",
+        "iconPath": "src/static/logo.png",
+        "selectedIconPath": "src/static/logo.png",
+        "text": "菜单"
+      },
+      {
+        "pagePath": "src/tabbar/setting/setting",
+        "iconPath": "src/static/logo.png",
+        "selectedIconPath": "src/static/logo.png",
+        "text": "设置"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

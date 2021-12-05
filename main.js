@@ -12,7 +12,6 @@ app.$mount()
 
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
-import 'src/static/css/common.scss'
 
 export function createApp() {
   const app = createSSRApp(App)
