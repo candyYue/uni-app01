@@ -58,6 +58,26 @@
 							}
 						})
 						console.log(that.list)
+						//进行上传操作
+						const filePath = res.tempFilePaths[0]
+						
+						// 存到云数据库中
+						uniCloud.callFunction({ //客户端调用云函数 云函数调用数据库
+							name:'hello',
+							success(res){
+								console.log(res)
+							}
+						})
+						
+						// 云存储
+						// const result = uniCloud.uploadFile({
+						// 	filePath: filePath,
+						// 	cloudPath: String(Math.random()*5).split('.')[1]+'.png',	
+						// });
+						// result.then(res =>{
+							
+						// })
+						
 				        // 预览图片
 				        // uni.previewImage({
 				        //     urls: res.tempFilePaths,
