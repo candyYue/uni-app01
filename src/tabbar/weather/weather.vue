@@ -6,6 +6,7 @@
 				<text class="temp">{{realtime.info}}  {{realtime.temperature}}℃</text><br/>
 				<text class="wind">{{realtime.direct}}{{realtime.power}}</text>
 			</view>
+			{{imageSrc}}
 			<!-- <image class="weather-img" src="../../static/img/monday.jpeg"></image> -->
 			<!-- <image class="weather-img-blur" mode="widthFix" src="../../static/img/monday.jpeg"></image> -->
 		</view>
@@ -33,6 +34,14 @@
 				future: [],
 				imageSrc:''
 			}
+		},
+		computed: {
+			...mapGetters({
+				deviceId: 'deviceId'
+			})
+			// name() {
+			// 	return this.data 
+			// }
 		},
 		methods:{
 			...mapActions({
@@ -66,7 +75,24 @@
 				})
 			},
 			getWeatherImg(){
-				this.imageSrc = '../../static/img/monday.jpeg'
+				// 
+				// 存到云数据库中
+				const that = this
+				uniCloud.callFunction({ //客户端调用云函数 云函数调用数据库
+					name:'weather',
+					data:{
+						action:'get',
+						deviceId: that.deviceId,
+					},
+					success(res){
+						if(res.result.data.length===0){
+							that.imageSrc = '../../static/img/monday.jpeg'
+						}else{
+							that.imageSrc = res.result.data[0].list[0].path
+						}
+						console.log(res)
+					}
+				})
 			},
 			getClientId() {
 				const that = this
@@ -76,18 +102,19 @@
 						//设备id 非 App 端由 uni-app 框架生成并存储，清空 Storage 会导致改变
 						uni.setStorage({
 						    key: 'deviceId',
-						    data: res.deviceId
+						    data: res.deviceId,
+							success: function () {
+								that.getDeviceId(res.deviceId)
+							}
 						});
-						that.getDeviceId(res.deviceId)
 					}
 				})
 			}
 		},
-		onLoad(){
-			this.getWeather()
+		async onLoad(){
+			await this.getClientId()
+			// this.getWeather()
 			this.getWeatherImg()
-			this.getClientId()
-			console.log(mapActions)
 		}
 	}
 </script>

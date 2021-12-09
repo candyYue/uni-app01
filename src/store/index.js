@@ -10,10 +10,16 @@ const store = new Vuex.Store({
 	},
     mutations: {
 		getDeviceId (state, payload) {
-			console.log(payload)
 			state.deviceId = payload.state
 	    },
 	},
-    actions: {}
+    actions: {
+		getDeviceId: (context, payload) => {
+		  context.commit({
+			type: 'getDeviceId',
+			state: payload
+		  })
+		}
+	}
 })
 export default store

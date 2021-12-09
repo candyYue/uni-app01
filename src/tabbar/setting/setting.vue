@@ -27,7 +27,7 @@
 			return {
 				list: [],
 				drag:false,
-				week
+				week,
 			}
 		},
 		components:{
@@ -57,14 +57,14 @@
 								index,
 							}
 						})
-						console.log(that.list)
 						//进行上传操作
 						const filePaths = res.tempFilePaths[0]
-						
+						console.log(that.deviceId)
 						// 存到云数据库中
 						uniCloud.callFunction({ //客户端调用云函数 云函数调用数据库
 							name:'weather',
 							data:{
+								action:'set',
 								deviceId: that.deviceId,
 								list: that.list
 							},
@@ -112,7 +112,7 @@
 			uni.getStorage({
 			    key: 'deviceId',
 			    success: function (res) {
-			        that.deviceId = res.deviceId
+			        that.deviceId = res.data
 			    }
 			});
 		}
