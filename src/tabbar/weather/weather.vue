@@ -6,8 +6,8 @@
 				<text class="temp">{{realtime.info}}  {{realtime.temperature}}℃</text><br/>
 				<text class="wind">{{realtime.direct}}{{realtime.power}}</text>
 			</view>
-			<image class="weather-img" src="../../static/img/monday.jpeg"></image>
-			<image class="weather-img-blur" mode="widthFix" src="../../static/img/monday.jpeg"></image>
+			<!-- <image class="weather-img" src="../../static/img/monday.jpeg"></image> -->
+			<!-- <image class="weather-img-blur" mode="widthFix" src="../../static/img/monday.jpeg"></image> -->
 		</view>
 		
 		<view v-for="(item,index) in future" class="future" :key='index'>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+	import { mapActions, mapGetters } from 'vuex'
 	export default{
 		data(){
 			return{
@@ -34,6 +35,9 @@
 			}
 		},
 		methods:{
+			...mapActions({
+				getDeviceId: 'getDeviceId'
+			}),
 			getWeather(){
 				uni.request({
 					url:'/juheweather/simpleWeather/query',
@@ -63,11 +67,27 @@
 			},
 			getWeatherImg(){
 				this.imageSrc = '../../static/img/monday.jpeg'
+			},
+			getClientId() {
+				const that = this
+				uni.getSystemInfo({
+					success(res){
+						// that.deviceId = res.deviceId
+						//设备id 非 App 端由 uni-app 框架生成并存储，清空 Storage 会导致改变
+						uni.setStorage({
+						    key: 'deviceId',
+						    data: res.deviceId
+						});
+						that.getDeviceId(res.deviceId)
+					}
+				})
 			}
 		},
 		onLoad(){
 			this.getWeather()
 			this.getWeatherImg()
+			this.getClientId()
+			console.log(mapActions)
 		}
 	}
 </script>

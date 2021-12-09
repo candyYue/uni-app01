@@ -59,13 +59,17 @@
 						})
 						console.log(that.list)
 						//进行上传操作
-						const filePath = res.tempFilePaths[0]
+						const filePaths = res.tempFilePaths[0]
 						
 						// 存到云数据库中
 						uniCloud.callFunction({ //客户端调用云函数 云函数调用数据库
-							name:'hello',
+							name:'weather',
+							data:{
+								deviceId: that.deviceId,
+								list: that.list
+							},
 							success(res){
-								console.log(res)
+								console.log('res', res)
 							}
 						})
 						
@@ -100,8 +104,19 @@
 		    },
 			saveImg(){
 				
-			}
+			},
+			
+		},
+		mounted(){
+			const that = this
+			uni.getStorage({
+			    key: 'deviceId',
+			    success: function (res) {
+			        that.deviceId = res.deviceId
+			    }
+			});
 		}
+		
 	}
 </script>
 
