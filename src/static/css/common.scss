@@ -1,1 +1,5 @@
 @import './reset.scss';
+uni-page-body, uni-page-refresh,.view{
+	height: 100%;
+	overflow: auto;
+}

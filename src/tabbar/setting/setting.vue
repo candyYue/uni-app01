@@ -36,67 +36,61 @@
 		methods:{
 			addImg(){
 				const that = this
-				uni.chooseImage({
-					count: 7,
-				    sizeType: ['original', 'compressed'],
-				    sourceType: ['album'],
-				    success: function(res) {
+				uniCloud.chooseAndUploadFile({
+				  type: 'image',
+				  count:7,
+				  onChooseFile(res) {
+					// if (res.tempFiles.length > 0) {
+					// 	uni.showLoading({
+					// 		title: '上传中...'
+					// 	})
+					// }
+				    const processAll = []
+				    for (let i = 0; i < res.tempFiles.length; i++) {
+				      processAll.push(res.tempFiles[i])
+				    }
+				    return Promise.all(processAll).then((fileList) => {
+				      let result = {
+				        tempFilePaths: []
+				      }
+				      result.tempFiles = fileList.map((fileItem, index) => {
+				        result.tempFilePaths.push(fileItem.path)
+				        return {
+				          path: fileItem.path,
+				          cloudPath:  `weather/${that.deviceId}/${String(Math.random()*5).split('.')[1]}.png`, //保存在云端的文件名
+				        }
+				      })
+				      return result
+				    })
+				  },
+				  success(res){
+					if(res.tempFiles&&res.tempFiles.length){
 						let list = []
-						const length = res.tempFilePaths&&res.tempFilePaths.length
-						if(0<length<7){
-							const addItem = res.tempFilePaths[res.tempFilePaths.length - 1]
-							let addArr = Array(7 - length)
-							addArr.fill(addItem)
-							list = [...res.tempFilePaths,...addArr]
-						}else{
-							list = [...res.tempFilePaths]
-						}
+						const length = res.tempFiles&&res.tempFiles.length
+						// if(0<length<7){
+						// 	const addItem = res.tempFiles[res.tempFiles.length - 1]
+						// 	let addArr = Array(7 - length)
+						// 	addArr.fill(addItem)
+						// 	list = [...res.tempFiles,...addArr]
+						// }else{
+							list = [...res.tempFiles]
+						// }
+						console.log(res)
 						that.list = list.map((v,index)=>{
-							return {
-								path:v,
-								index,
-							}
+							return { path: v.path, index , url:v.url}
 						})
-						//进行上传操作
-						const filePaths = res.tempFilePaths[0]
-						console.log(that.deviceId)
-						// 存到云数据库中
-						uniCloud.callFunction({ //客户端调用云函数 云函数调用数据库
-							name:'weather',
-							data:{
+						uniCloud.callFunction({  //调用云端函数，把图片地址写入表
+							name:'weather',  //云函数名称
+							data: {				//提交给云端的数据
 								action:'set',
 								deviceId: that.deviceId,
-								list: that.list
-							},
-							success(res){
-								console.log('res', res)
-							}
+								list: that.list,
+								createTime: Date.now()
+							}			
 						})
-						
-						// 云存储
-						// const result = uniCloud.uploadFile({
-						// 	filePath: filePath,
-						// 	cloudPath: String(Math.random()*5).split('.')[1]+'.png',	
-						// });
-						// result.then(res =>{
-							
-						// })
-						
-				        // 预览图片
-				        // uni.previewImage({
-				        //     urls: res.tempFilePaths,
-				        //     longPressActions: {
-				        //         itemList: ['发送给朋友', '保存图片', '收藏'],
-				        //         success: function(data) {
-				        //             console.log('选中了第' + (data.tapIndex + 1) + '个按钮,第' + (data.index + 1) + '张图片');
-				        //         },
-				        //         fail: function(err) {
-				        //             console.log(err.errMsg);
-				        //         }
-				        //     }
-				        // });
-				    }
-                });
+					  }
+					}
+				})
 			},
 		
 		    drawImg(){

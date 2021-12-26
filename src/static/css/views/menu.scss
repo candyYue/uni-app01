@@ -1,0 +1,17 @@
+.garbage-search{
+	margin: 20px;
+	border: 1px solid #ccc;
+	height: 36px;
+	border-radius: 5px;
+	padding: 0 10px;
+}
+.garbage-category{
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.garbage-category >div{
+	width: 50%;
+	text-align: center;
+	margin-top: 20px;
+}

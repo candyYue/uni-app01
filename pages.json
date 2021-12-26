@@ -1,16 +1,21 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages	
 		{
 			"path": "src/tabbar/weather/weather",
 			"style": {
-				"navigationBarTitleText": "weather"
+				"navigationStyle":"custom"
 			}
 		},
 		{
 			"path": "src/tabbar/menu/menu",
 			"style": {
 				"navigationBarTitleText": "menu"
+			}
+		},
+		{
+			"path": "src/pages/categroy",
+			"style": {
+				"navigationBarTitleText": "categroy"
 			}
 		},
 		{
@@ -35,20 +40,20 @@
 		"list": [
 			{
 				"pagePath": "src/tabbar/weather/weather",
-				"iconPath":"src/static/logo.png",
-				"selectedIconPath":"src/static/logo.png",
+				"iconPath":"src/static/icon/sun-default.png",
+				"selectedIconPath":"src/static/icon/sun.png",
 				"text": "天气"
 			},
 	        {
 				"pagePath": "src/tabbar/menu/menu",
-				"iconPath":"src/static/logo.png",
-				"selectedIconPath":"src/static/logo.png",
+				"iconPath":"src/static/icon/menu-default.png",
+				"selectedIconPath":"src/static/menu.png",
 				"text": "菜单"
 			},
 	        {
 				"pagePath": "src/tabbar/setting/setting",
-				"iconPath":"src/static/logo.png",
-				"selectedIconPath":"src/static/logo.png",
+				"iconPath":"static/icon/home-default.png",
+				"selectedIconPath":"static/icon/home.png",
 				"text": "设置"
 			}
 		]

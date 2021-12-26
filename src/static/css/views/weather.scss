@@ -1,26 +1,95 @@
 .today{
 	text-align: center;
-	margin-bottom: 2rem;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	color: #fff;
+	background-image: linear-gradient(to right bottom, #6DCBF6 , #6068FB);
+}
+.city{
+	font-size: 2rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+.city div{
+	display: inline-block;
+}
+.city image{
+	vertical-align: middle;
+	margin-right: 10px;
+	width: 20px;
+	height: 20px;
 }
 .temp{
-	font-size: 4rem;
+	font-size: 3rem;
+}
+.detail{
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	bottom: 0;
+	color: #fff;
+	transition: 1s all ease-in-out;
+	z-index: 99;
+}
+.detail.detail-up{
+	height: calc(100% - 150px);
+}
+.detail .up-btn{
+	text-align: center;
+	font-size: 3rem;
+	color: #fff;
+	animation: upandowm 1s linear 2s infinite;
+}
+
+@keyframes upandowm {
+	0% {
+		transform: translate(0px, 0px);
+	}
+	50% {
+		transform: translate(0px, -10px);
+	}
+	100% {
+		transform: translate(0px, 0px);
+	}
+}
+.detail-info{
+	padding: 0 50px;
+	text-align: center;
+}
+.airquality,.humidity,.winddirection,.windpower{
+	width: 50%;
+	display: inline-block;
+	text-align: center;
+	margin-bottom: 10px;
+	
+}
+.detail-info image{
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
 }
 .future{
 	padding: 0 2rem;
 	margin-bottom: 2px;
 	line-height: 30px;
-	color: #333333;
+	height: 30px;
+	border-bottom: 1px solid #fff;
+	color: #fff;
 	display: flex;
 	justify-content: space-between;
-	background-image: linear-gradient(to right, #fdeb82 , #fff);
+	// background-image: linear-gradient(to right, #6DCBF6 , #fff);
 }
 .weather-info{
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 99;
-	top: 6rem;
+	text-align: right;
+	z-index: 9;
 	color: #FFFFFF;
+	padding-top: 10px;
+	transition: 1.2s all ease-in-out;
+}
+.today-up .weather-info{
+	text-align: center;
+	padding-top: 120px;
 }
 .weather-img{
 	position: absolute;
