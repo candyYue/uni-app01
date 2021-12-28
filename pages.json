@@ -7,13 +7,13 @@
 			}
 		},
 		{
-			"path": "src/tabbar/menu/menu",
+			"path": "src/tabbar/categroy/categroy",
 			"style": {
-				"navigationBarTitleText": "menu"
+				"navigationBarTitleText": "categroy"
 			}
 		},
 		{
-			"path": "src/pages/categroy",
+			"path": "src/tabbar/categroy/categroyId",
 			"style": {
 				"navigationBarTitleText": "categroy"
 			}
@@ -45,10 +45,10 @@
 				"text": "天气"
 			},
 	        {
-				"pagePath": "src/tabbar/menu/menu",
+				"pagePath": "src/tabbar/categroy/categroy",
 				"iconPath":"src/static/icon/menu-default.png",
 				"selectedIconPath":"src/static/menu.png",
-				"text": "菜单"
+				"text": "分类"
 			},
 	        {
 				"pagePath": "src/tabbar/setting/setting",

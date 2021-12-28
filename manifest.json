@@ -68,5 +68,28 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+	"h5": {
+		"devServer": {
+			"port": 8080,
+			"proxy": {
+				"/baidu": {
+					"target": "https://aip.baidubce.com",
+					"changeOrigin": true,
+					"secure": false,
+					"pathRewrite":{
+						"^/baidu": ""
+					}
+				},
+				"/keyword": {
+					"target": "https://sffc.sh-service.com",
+					"changeOrigin": true,
+					"secure": false,
+					"pathRewrite":{
+						"^/keyword": ""
+					}
+				}
+			}
+		}
+	}
 }

@@ -1,0 +1,88 @@
+.garbage-input{
+	border: 1px solid #ccc;
+	height: 36px;
+	border-radius: 5px;
+	padding: 0 40px;
+}
+.garbage-search{
+	// margin: 20px;
+}
+.garbage-search > .search-img,
+.garbage-search > .search-txt{
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	top: 2px;
+}
+.garbage-search > .search-img{
+	left: 4px;
+}
+.garbage-search > .search-txt{
+	right: 4px;
+}
+.garbage-category{
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.garbage-category >div{
+	width: 50%;
+	text-align: center;
+	margin-top: 20px;
+}
+.spinner-mask{
+	width: 100px;
+	height: 100px;
+	background-color: #6DCBF6;
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+	top: 100px;
+	border-radius: 5px;
+	text-align: center;
+}
+.spinner{
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin: 70px auto 10px;
+}
+ 
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #6DCBF6;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+ 
+.double-bounce2 {
+  animation-delay: -1.0s;
+}
+ 
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(0.0);
+  } 50% {
+    transform: scale(1.0);
+  }
+}
+
+
+.categroy-id{
+	padding: 20px;
+	text-align: center;
+}
+.action{
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 5px;
+}
+.categroy-todo{
+	width: 80px;
+	height: 80px;
+}
