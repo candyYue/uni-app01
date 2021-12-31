@@ -19,15 +19,9 @@
 			}
 		},
 		{
-			"path": "src/tabbar/home/home",
+			"path": "src/tabbar/map/map",
 			"style": {
-				"navigationBarTitleText": "home"
-			}
-		},
-		{
-			"path": "src/tabbar/setting/setting",
-			"style": {
-				"navigationBarTitleText": "setting"
+				"navigationBarTitleText": "map"
 			}
 		}
     ],
@@ -51,7 +45,7 @@
 				"text": "分类"
 			},
 	        {
-				"pagePath": "src/tabbar/setting/setting",
+				"pagePath": "src/tabbar/map/map",
 				"iconPath":"static/icon/home-default.png",
 				"selectedIconPath":"static/icon/home.png",
 				"text": "设置"
